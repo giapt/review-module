@@ -191,40 +191,7 @@ class Review extends CActiveRecord
 			return true;
 	}
 
-	protected function addPointSchool($model2,$thiskey)
-	{
-
-			$list=$model2[0]->attributes;
-			$count=$list['count'];//get lay so rate tu truoc
-			$a=$list['rate1'];$b=$list['rate2'];$c=$list['rate3'];
-			$d=$list['rate4'];$e=$list['rate5'];
-			$m=5;
-			$colArr=$this->attributes;
-					
-
-			    $key=key($colArr);
-
-		     	$a=round(($a*$count+$this->rate1)/($count+1),1);
-		     	$b=round(($b*$count+$this->rate2)/($count+1),1);
-		     	$c=round(($c*$count+$this->rate3)/($count+1),1);
-		     	$d=round(($d*$count+$this->rate4)/($count+1),1);
-		     	$e=round(($e*$count+$this->rate5)/($count+1),1);
-
-			 $count=$count+1;
-			 $f=$a+$b+$c+$d+$e;
-			 //$this->average=round($this->average/$count,1);
-			 $f=round($f/$m,1);
-					
-
-			Yii::app()->db
-			->createCommand("UPDATE tbl_school 
-				SET rate1=:rate1,rate2=:rate2,rate3=:rate3,rate4=:rate4,rate5=:rate5,average=:average,count=:count 
-				WHERE id=:id")
-			->bindValues(
-				array(':id'=>$thiskey,':rate1'=>$a,':rate2'=>$b,':rate3'=>$c,':rate4'=>$d,':rate5'=>$e,':average'=>$f,':count'=>$count))
-			->execute();
-			return true;
-	}
+	
 
 
 	protected function afterSave()
@@ -247,19 +214,9 @@ class Review extends CActiveRecord
 		}
 		$this->module->onUpdateReview($this/*, $reviewedModel->findByPk($this->key)*/);
 		
-		$assets=Yii::app()->modules;
-		$aa=$assets['review']['updateModelAuto'];
+		$modules=Yii::app()->modules;
+		$aa=$modules['review']['updateModelAuto'];
 		if ($aa=='on'){
-			$thiskey=$this->key;
-			if (isset($this->key)) {
-					$model2 = School::model()->findAll(
-						 array("condition"=>"id =  $this->key",'select'=>'rate2, rate1,rate3,rate4,rate5,count',));
-				}
-				else $model2=NULL;
-			if ($model2<>NULL)
-			{
-				self::addPointSchool($model2,$thiskey);
-			}
 
 			if (isset($this->key)) {
 				$models = Teacher::model()->findAll(
@@ -314,77 +271,30 @@ class Review extends CActiveRecord
 			return true;
 	}
 
-	protected function minusPointSchool($models,$key)
-	{
-			$list=$models[0]->attributes;
-			$count=$list['count'];//get lay so rate tu truoc
-			$a=$list['rate1'];$b=$list['rate2'];$c=$list['rate3'];
-			$d=$list['rate4'];$e=$list['rate5'];
-			$m=5;
-			
-			    
-			    //$val=$colArr[$key];
-			    
-		     if (($count==1) or ($count==0))
-		     {
-		     	$a=$b=$c=$d=$e=0; $count=0;
-		     }	else{
-
-
-		     	$a=round(($a*$count-$this->rate1)/($count-1),1);
-		     	$b=round(($b*$count-$this->rate2)/($count-1),1);
-		     	$c=round(($c*$count-$this->rate3)/($count-1),1);
-		     	$d=round(($d*$count-$this->rate4)/($count-1),1);
-		     	$e=round(($e*$count-$this->rate5)/($count-1),1);
-		     	$count=$count-1;
-	 		}
-
-				 
-				 $f=$a+$b+$c+$d+$e;
-				 //$this->average=round($this->average/$count,1);
-				 $f=round($f/$m,1);
-				
-
-			Yii::app()->db
-			->createCommand("UPDATE tbl_teacher 
-				SET rate1=:rate1,rate2=:rate2,rate3=:rate3,rate4=:rate4,rate5=:rate5,average=:average,count=:count 
-				WHERE id=:id")
-			->bindValues(
-				array(':id'=>$key,':rate1'=>$a,':rate2'=>$b,':rate3'=>$c,':rate4'=>$d,':rate5'=>$e,':average'=>$f,':count'=>$count))
-			->execute();
-	}
+	
 
 	protected function beforeDelete()
 	{
-		//ko co id teacher nhu o afterSave nen phai get lay
-		$assets=Yii::app()->modules;
-		$aa=$assets['review']['updateModelAuto'];
+		
+		$modules=Yii::app()->modules;
+		$aa=$modules['review']['updateModelAuto'];
 		if ($aa=='on'){
 			$getID= Postsreviews::model()->findAll(
 				array("condition"=>"reviewId=$this->id"));
 			$li = CHtml::listData($getID,'postId','reviewId');
 			$key=key($li);
 			
-			$model2 = School::model()->findAll(
-						 array("condition"=>"id =  $key",'select'=>'rate1,rate2,rate3,rate4,rate5,count',));
-			if ($model2<>NULL)
-			{
-				self::minusPointTeacher($model2,$key);
-			}
-
-
 			$models = Teacher::model()->findAll(
 						 array("condition"=>"id =  $key",'select'=>'rate1,rate2,rate3,rate4,rate5,count',));
 			if ($models<>NULL)
 			{
-				self::minusPointSchool($models,$key);
+				self::minusPointTeacher($models,$key);
 			}
 		}	
 		
 		return parent::beforeDelete();
 	}
 
-	//$this->key is PostID or TeacherID
 	protected function afterDelete()
 	{
 

@@ -1,18 +1,21 @@
 Review module
 --------------
-Review module, extended from CeBe's comment-module at: http://www.yiiframework.com/extension/comment-module/ 
+Review module, extended from CeBe's [comment-module](http://www.yiiframework.com/extension/comment-module/) 
 
 --------------
 
 makes every entity of your application reviewable.
 Features:
 
-* Review with rating star
-* Multiple rating by add column to `reviews` table (example rate6,rate7... with int format)
+* Review with rating star and message
+* Multiple rating by add column to `reviews` table (example rate6,rate7... with int format) and add name column to function rules() in review model, it will auto update in view and form.
 * Create, Update, Delete reviews with ajax
 * define multiple models that can be reviewed
 * Events raised on new, update, delete
-* Update Model value
+* Update Model target value (you should fix function afterSave(), beforeDelete() in Review model to update value in model review)
+*One user can only have onetime to review every object. When you haved review, it will show notification and show your review to edit or delete 
+
+
 * more coming soon...
 
 
@@ -123,10 +126,10 @@ Add reviewable behavior to all Models you want to be reviewed.
 Finally add reviews to your view template of the reviewable model:
 
 ~~~php
-<h1>reviews</h1>
 
 <?php $this->renderPartial('review.views.review.reviewList', array(
-	'model'=>$model
+  'model'=>$model
 )); ?>
 ~~~
+
 

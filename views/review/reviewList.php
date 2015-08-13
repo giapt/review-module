@@ -6,18 +6,11 @@ $reviews = $model->getReviewDataProvider();
 $list=$reviews->rawData;
 $reviews->setPagination(false);
 
-
-
-//$a='review.themes.review.views.review._view';
-$a='review.views.review._view';
 $this->widget('zii.widgets.CListView', array(
     'dataProvider'=>$reviews,
-    'itemView'=>$a,
+    'itemView'=>'review.views.review._view',
     'emptyText'=>'',
-    //'id'=>'#review',
 ));
-// $b='review.themes.classic.views.review._form';
-$b='review.views.review._form';
 
 
 $count=0;
@@ -53,7 +46,7 @@ if ((!Yii::app()->user->isGuest) AND ($list<>NULL)) {
 }
 if ($count<>0) {
 		echo "<br>";
-		echo "You rated this teacher. You view and edit your rate at ";
+		echo "You rated';. You view and edit your rate at ";
 		echo "<a href=".'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']."#ext-review-".$link.">";
 								echo "here.";
 								echo "</a>";
@@ -62,7 +55,7 @@ if ($count<>0) {
 	}
 	else
 	{
-		$this->renderPartial($b, array(
+		$this->renderPartial('review.views.review._form', array(
 		    'review'=>$model->reviewInstance
 		));
 	}
