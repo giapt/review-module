@@ -1,34 +1,4 @@
 <?php
-	Yii::app()->clientScript->registerCss('ext-review', "
-	div.ext-review {
-		width: 100%;	
-		min-height: 200px;
-	}
-	
-	span.ext-review-options {
-		float: right;
-		color: #aaa;
-	}
-	span.khung-left{
-		margin-left :5px;
-	}
-	td.nav-td1{
-		color: #cc3b1a;
-	}
-	
-	p.test{
-		color : black;
-	}
-	
-	nav.khungnav{
-		border-width:thin;
-		width:560px;
-		
-	}
-	");
-?>
-
-<?php
 // $assets=Yii::app()->modules;
 // $aa=$assets['review']['updateModelAuto'];
        $assetsurl = Yii::app()->getAssetManager()->publish(Yii::getPathOfAlias('review.assets') );

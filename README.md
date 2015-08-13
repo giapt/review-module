@@ -1,12 +1,18 @@
-review module
+Review module
+--------------
+Review module, extended from CeBe's comment-module at: http://www.yiiframework.com/extension/comment-module/ 
+
 --------------
 
 makes every entity of your application reviewable.
 Features:
 
+* Review with rating star
+* Multiple rating by add column to `reviews` table (example rate6,rate7... with int format)
 * Create, Update, Delete reviews with ajax
 * define multiple models that can be reviewed
 * Events raised on new, update, delete
+* Update Model value
 * more coming soon...
 
 
@@ -18,6 +24,16 @@ Requirements
 
 Download
 --------
+
+There are two ways to get this extension working:
+
+1. Clone repo:
+   * Go to your application baseDir (`protected` in default yii webapp).
+   * `git clone https://github.com/giapt/review-module.git modules/review-module`
+
+2. [Download](https://github.com/giapt/review-module/tags) latest release and put all the files into
+   `modules/review-module` under your application baseDir (`protected` in default yii webapp).
+   
 
 Quickstart
 ----------
@@ -68,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `reviews` (
   `createDate` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_comments_userId` (`userId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=24 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 ~~~
 You might also want to add a foreign key for `userId` column that references you user tables pk.
 
@@ -113,42 +129,4 @@ Finally add reviews to your view template of the reviewable model:
 	'model'=>$model
 )); ?>
 ~~~
-
-
-Extending review-Module
-------------------------
-
-review module raises [events](http://www.yiiframework.com/doc/guide/1.1/en/basics.component#component-event)
-to which you can attach event handlers to handle them.
-See [The Definitive Guide to Yii](http://www.yiiframework.com/doc/guide/1.1/en/basics.component#component-event) on how to do this.
-
-You can also attach [behaviors](http://www.yiiframework.com/doc/guide/1.1/en/basics.component#component-behavior)
-to reviewModule by setting `'behaviors'=>array(/* ... */)` in the module config described above.
-See [CModule::behaviors](http://www.yiiframework.com/doc/api/1.1/CModule#behaviors-detail) on how to add behaviors to a module.
-
-### onNewreview
-
-This event is raised when a new review has been saved.
-The following attributes are available on the `$event` given as the first parameter to the event handler:
-
-* `$event->review` is the ActiveRecord instance of the currently added review.
-* `$event->reviewedModel` is the model the review was added to.
-
-Possible use cases:
-
-* Send an E-Mail-Notification
-
-### onUpdatereview
-
-This event is raised when a user edited a review.
-The following attributes are available on the `$event` given as the first parameter to the event handler:
-
-* `$event->review` is the ActiveRecord instance of the updated review.
-
-### onDeletereview
-
-This event is raised when a user deleted a review.
-The following attributes are available on the `$event` given as the first parameter to the event handler:
-
-* `$event->review` is the ActiveRecord instance of the deleted review.
 
