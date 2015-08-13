@@ -1,0 +1,134 @@
+
+#index123{
+	margin-left: 60px;
+	width: 760px;
+}
+#index-id{
+	font-size: 24px;
+	width: 82px;
+	height: 82px;
+	vertical-align: middle;
+	text-align: center !important;
+	margin-left: 25px;
+	margin-top: 27px;
+	border-radius: 90%;
+	border: 1px gray solid;
+}
+#index-form{
+	margin-left: 125px;
+	margin-top: -80px;
+	height: 90px;
+}
+#index-td1{
+	width: 70px;
+	height: 70px;
+}
+
+#index-name{
+	font-size: 24px;
+	color: #428BCA;
+}
+#index-degree{
+	font-size: 16px;
+	margin-top: 8px;
+}
+/*#indexmain:hover{
+	background: #F7F7F7;
+}*/
+#index-school{
+	font-size: 24px;
+	color: #428BCA;
+}
+#index-abc{
+	font-size: 16px;
+	/*color: #428BCA;*/
+}
+#a123{
+	background: white;
+}
+#a123:hover{
+	background: #F7F7F7;
+}
+#index-login{
+	font-size: 20px;
+
+}
+#login-form{
+	font-size: 18px;
+	margin-left: 15px;
+	margin-top: 5px;
+	position: absolute;
+}
+#login-form1{
+	margin-left: 120px;
+	margin-top: 15px;
+}
+
+#nameLogin{
+	margin-left: 20px;
+	margin-top: 25px;
+	font-size: 24px;
+}
+#loginremember{
+	margin-left: 15px;
+	margin-top: 15px;
+}
+#signinsub{
+	margin-left: 15px;
+	width: 30px;
+}
+.glyphicon {
+	font-size: 28px;
+  position: relative;
+  top: 19px;
+  /*display: inline-block;*/
+  font-family: 'Glyphicons Halflings';
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 0;
+  color: white;
+  -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+.glyphicon:empty {
+  width: 0px;
+  border: none;
+}
+.glyphicon-search:before {
+  content: "\e003";
+}
+#indexmain{
+	margin-left: -95px;
+	margin-right: 90px;
+}
+#index-star{
+	margin-top: 5px;
+}
+#formregister{
+	border: 1px gray solid;
+	margin-left: 5px;
+	margin-top: 5px;
+	width: 400px;
+}
+#form-create-user{
+	margin-top: 5px;
+	margin-left: 15px;
+}
+#formlogin{
+	margin-left: 5px;
+	margin-top: 5px;
+	border: 1px gray solid;
+}
+#form-content{
+	/*margin-top: 5px;*/
+	margin-left: 15px;
+}
+#loginremenber{
+	margin-left: 30px;
+	margin-top: -23px;
+}

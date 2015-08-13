@@ -1,0 +1,204 @@
+#view_form{padding-top: 20px;padding-left: 15px;}
+#view-infor{padding-left: 20px;padding-top: 10px;min-height: 50px;font-size: 20px;}
+#view_danhgia{padding-right: 20px;padding-left: 75px;}
+#view_id{font-size: 18px;}
+#view_main{font-size: 25px;}
+#teacher-title{color:FFFFCC;font-size: 25px;}
+#atext{
+	margin-top: 10px;
+	margin-bottom: auto;
+	height: auto;
+	min-height: 100px;
+	margin-left: 2px;
+}
+#apa{font-size: 18px;color: blue;}
+/*#teacher_review{padding-top: 500px;}*/
+#teacher-post{padding-top: 50px;}
+.test123{
+	margin-left:5px;
+	width:auto;
+	line-height:20px;
+	padding-top: 5px !important ;
+	text-align: left !important ;
+	height: 80px;
+}
+#teacher_review1{padding-top: -25px !important;}
+#teacher-tr{min-width: 300px;}
+#review-khung1{margin-bottom: 20px;}
+#atable{height: 550px;text-align: left !important ;position: relative;margin-top: -40px;}
+#table1{
+	width: 100%;
+	height: auto;
+
+}
+
+.test456{
+	height: auto;
+	background: black;
+	width: 100%;
+}
+
+
+#teacher_khung{
+	border-radius: 5px;
+	border: 1px;
+}
+#teacher_name{
+	/*margin-left: 5px;*/
+	font-size: 32px;
+	color: #cc3b1a;
+}
+#teacher_post{
+	margin-top: -25px;
+	margin-left: 170px;
+	color: black;
+	font-size: 16px;
+	position: center;
+}
+#teacher-rate-ave{
+	margin-left: 10px;
+	/*font-style: */
+	font-weight: 1.5px;
+}
+#teacher_talk{
+	margin-left: 33px;
+	margin-top: 50px;
+}
+#teacher_table{
+	vertical-align: baseline;
+	text-align: center;
+}
+#page_foot{
+	margin-left: 475px;
+	margin-top: -75px;
+}
+#font_input1{
+	height: 60px;
+	width: 250px;
+	background: #83C832;
+	vertical-align: middle;
+	border-radius: 10px;
+	font-size: 35px;
+	color: white;
+}
+#teacher-name{
+	font-size: 35px;
+	color: #428BCA;
+}
+#teacher-degree{
+	font-size: 18px;
+}
+#teacher-caunoi{
+	font-size: 18px;
+}
+#teacher-form-1{
+	height: 120px;
+}
+
+
+/*ma mau cam #cc3b1a*/
+#teacher-rate1{
+	/*margin-left: 100px;*/
+	margin-top: 4px;
+	width: 85px;
+	padding-left:10px; 
+}
+#canchu2{
+	padding-left: 10px;
+}
+#teacher-rate2{
+	/*margin-left:  100px;*/
+	margin-top: -53px;
+	width: 85px;
+}
+#teacher-rate3{
+	/*margin-left: 180px;*/
+	margin-top: -54px;
+	width: 85px;
+}
+#teacher-rate4{
+	/*margin-left: 260px;*/
+	margin-top: -54px;
+	width: 85px;
+}
+#teacher-rate5{
+	/*margin-left: 340px;*/
+	margin-top: -53px;
+	width: 85px;
+}
+#teacher-rate{
+	background-color: white;
+	/*font-weight: bold;*/
+	/*color: blue;*/
+	/*font-family: tahoma !important;*/
+	min-height: 200px;
+}
+#bacground:hover{
+	background: #EEEDE8;
+}
+#formteacher{
+	width: 600px;
+	border: 1px gray solid;
+}
+#teacher-create-content{
+	margin-left: 15px;
+}
+#reviewpoint{
+	margin-left: 730px;
+	font-size: 24px;
+}
+#reviewList{
+	font-size: 24px;
+
+}
+#test{
+	display: none;
+	position: fixed;
+	margin-left: 20%;
+	margin-top: -540px;
+	margin-bottom: 200px;
+	width: 50%;
+	height: 80%;
+	border: 1px gray solid;
+	border-radius: 5px;
+	background: white;
+}
+#titleflag{
+	background: #F7F7F7;
+	margin-top: 0px;
+	font-size: 32px !important;
+	text-align: center;
+	font-size: 24px;
+	height: 40px;
+}
+#footflag{
+	font-size: 24px;
+	margin-left: 70%;
+	margin-top: 3%;
+	border: 1px solid gray;
+	width: 120px;
+	text-align: center;
+	border-radius: 15px;
+	background: #F7F7F7;	
+}
+#flag{
+	font-size: 24px;
+	margin-left: 530px;
+	margin-top: -3px;
+	border: 1px solid gray;
+	width: 120px;
+	text-align: center;
+	border-radius: 15px;
+	background: #F7F7F7;	
+}
+#contentflag{
+	width: 100%;
+	height: 80%;
+}
+#caccelflag{
+	margin-top: -5%;
+	margin-left: 3%;
+	width: 60px;
+	border: none;
+	background: no-repeat;
+}
