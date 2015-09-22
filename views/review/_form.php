@@ -39,7 +39,7 @@
 				     	 else $b=0;
 					     $this->widget('CStarRating',array(
 					     				'value'=>$b,
-								        'name'=>'review['.$key.']',
+								        'name'=>'Review['.$key.']',
 								        'minRating'=>1, //minimal value
 								        'maxRating'=>5,//max value
 								        'starCount'=>5, //number of stars
@@ -73,7 +73,7 @@
 	
 				<div id = "view_review_form">
 					
-					<p>Tell some memory about your teacher</p>
+					<p>Tell what you think</p>
 					<?php echo $form->textArea($review,'message',array('rows'=>7, 'cols'=>65	)); ?>
 					
 					<?php echo $form->error($review,'message'); ?>

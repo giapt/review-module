@@ -201,9 +201,9 @@ class Review extends CActiveRecord
 			$reviewedModel = CActiveRecord::model($this->module->reviewableModels[$this->type]);
 			// if review is new, connect it with commended model
 			$this->getDbConnection()->createCommand(
-				"INSERT INTO ".$reviewedModel->mapTable."(".$reviewedModel->mapReviewColumn.", ".$reviewedModel->mapRelatedColumn.")
-				 VALUES (:id, :key);"
-			)->execute(array(':id' => $this->id, ':key' => $this->key));
+				"INSERT INTO ".$reviewedModel->mapTable."(".$reviewedModel->mapReviewColumn.", ".$reviewedModel->mapRelatedColumn.",type".")
+				 VALUES (:id, :key, :type)"
+			)->execute(array(':id' => $this->id, ':key' => $this->key, ':type' => $this->type));
 
 			parent::afterSave();
 

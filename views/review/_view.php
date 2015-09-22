@@ -77,7 +77,7 @@ Yii::app()->clientScript->registerCssFile($assetsurl.'/css/index.css');
 							     
 			  
 			     		$this->widget('CStarRating',array(
-					    'name'=>'review['.$a.']',
+					    'name'=>'Review['.$a.']',
 					    'value'=>$data->$key,
 					    'minRating'=>1, //minimal value
 						'maxRating'=>5,//max value

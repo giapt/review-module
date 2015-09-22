@@ -138,12 +138,14 @@ class ReviewableBehavior extends CActiveRecordBehavior
 		if (is_null($this->mapTable) || is_null($this->mapRelatedColumn)) {
 			throw new CException('mapTable and mapRelatedColumn must not be null!');
 		}
+		$type=get_class($this->owner);
+		$type=strtolower($type);
 
 		// @todo: add support for composite pks
 		return new CDbCriteria(array(
 			'join' => "JOIN " . $this->mapTable . " cm ON t.id = cm." . $this->mapReviewColumn,
-		    'condition' => "cm." . $this->mapRelatedColumn . "=:pk",
-			'params' => array(':pk'=>$this->owner->getPrimaryKey())
+		    'condition' => "cm." . $this->mapRelatedColumn . "=:pk AND cm.type=:type",
+			'params' => array(':pk'=>$this->owner->getPrimaryKey(), 'type'=> $type),
 		));
 	}
 

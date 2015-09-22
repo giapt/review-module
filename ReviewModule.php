@@ -1,11 +1,6 @@
 <?php
 
-/**
- * This module includes complete reviewing support into your application
- *
- * @author Carsten Brandt <mail@cebe.cc>
- * @package yiiext.modules.review
- */
+
 class ReviewModule extends CWebModule
 {
 	/**

@@ -4,7 +4,11 @@
 /** @var CArrayDataProvider $reviews */
 $reviews = $model->getReviewDataProvider();
 $list=$reviews->rawData;
-$reviews->setPagination(false);
+// $reviews->setPagination(false);
+// echo "<pre>";
+// var_dump($reviews);
+// echo "</pre>";
+// die();
 
 $this->widget('zii.widgets.CListView', array(
     'dataProvider'=>$reviews,
@@ -46,7 +50,7 @@ if ((!Yii::app()->user->isGuest) AND ($list<>NULL)) {
 }
 if ($count<>0) {
 		echo "<br>";
-		echo "You rated';. You view and edit your rate at ";
+		echo "You rated. You can view and edit your rating at ";
 		echo "<a href=".'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']."#ext-review-".$link.">";
 								echo "here.";
 								echo "</a>";

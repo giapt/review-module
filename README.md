@@ -2,7 +2,6 @@ Review module
 --------------
 Review module, extended from CeBe's [comment-module](http://www.yiiframework.com/extension/comment-module/) 
 
---------------
 
 makes every entity of your application reviewable.
 Features:
@@ -14,6 +13,7 @@ Features:
 * Events raised on new, update, delete
 * Update Model target value (you should fix function afterSave(), beforeDelete() in Review model to update value in model review)
 *One user can only have onetime to review every object. When you haved review, it will show notification and show your review to edit or delete 
+* Review for multiple model
 
 
 * more coming soon...
@@ -32,7 +32,7 @@ There are two ways to get this extension working:
 
 1. Clone repo:
    * Go to your application baseDir (`protected` in default yii webapp).
-   * `git clone https://github.com/giapt/review-module.git modules/review-module`
+   * `git clone https://github.com/giapt/review-module.git extension/review-module`
 
 2. [Download](https://github.com/giapt/review-module/tags) latest release and put all the files into
    `modules/review-module` under your application baseDir (`protected` in default yii webapp).
@@ -47,7 +47,7 @@ Add module to your application config (optional config values are reviewed):
 <?php
     // ...
     'review'=>array(
-            'class'=>'application.modules.review-module.ReviewModule',
+            'class'=>'ext.review-module.ReviewModule',
             'reviewableModels'=>array(
                 // define reviewable Models here (key is an alias that must be lower case, value is the model class name)
                 'post'=>'Post'
@@ -68,6 +68,7 @@ Add module to your application config (optional config values are reviewed):
 //          'reviewModelClass'=>'review.models.Review',
         ),
     // ...
+?>
 ~~~
 
 Create database tables:
@@ -95,13 +96,14 @@ Create a database table for every reviewable Model relation:
 
 ~~~sql
     DROP TABLE IF EXISTS `posts_reviews_nm`;
-    CREATE TABLE IF NOT EXISTS `posts_reviews_nm` (
-      `postId` int(11) unsigned NOT NULL,
-      `reviewId` int(11) unsigned NOT NULL,
-      PRIMARY KEY (`postId`,`reviewId`),
-      KEY `fk_posts_comments_comments` (`reviewId`),
-      KEY `fk_posts_comments_posts` (`postId`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+CREATE TABLE IF NOT EXISTS `posts_reviews_nm` (
+  `postId` int(11) unsigned NOT NULL,
+  `reviewId` int(11) unsigned NOT NULL,
+  `type` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`postId`,`reviewId`),
+  KEY `fk_posts_comments_comments` (`reviewId`),
+  KEY `fk_posts_comments_posts` (`postId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 ~~~
 You might want to add foreign keys here too.
 
@@ -121,6 +123,7 @@ Add reviewable behavior to all Models you want to be reviewed.
             ),
        );
     }
+?>
 ~~~
 
 Finally add reviews to your view template of the reviewable model:
